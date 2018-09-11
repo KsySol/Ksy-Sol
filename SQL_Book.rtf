@@ -1,56 +1,53 @@
-аааааа
-{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\fnil\fcharset204 Times New Roman;}{\f1\fnil\fcharset0 Times New Roman;}}
-{\*\generator Riched20 10.0.17134}\viewkind4\uc1 
-\pard\sa200\sl276\slmult1\f0\fs28\lang1058\'d0\'e5\'e0\'eb\'b3\'e7\'f3\'e2\'e0\'f2\'e8 \'e4\'ee\'e1\'e0\'e2\'eb\'e5\'ed\'ed\'ff \'b3 \'e2\'e8\'eb\'f3\'f7\'e5\'ed\'ed\'ff \'ea\'ed\'e8\'e3, \'e0\'e2\'f2\'ee\'f0\'b3\'e2, \'e2\'e8\'e4\'e0\'e2\'ed\'e8\'f6\'f2\'e2;\par
-\line\f1\lang9 DELETE FROM "Edition" \par
-WHERE  edition_name ='Sun'AND adress = 'Skort 34'\par
-\par
-INSERT INTO "Edition" (edition_name, adress )\par
-VALUES ( 'Sun', 'Skort 34')\par
-\par
-INSERT INTO "Author" (last_name, first_name, year_birth,  country )\par
-VALUES ( 'Kody', 'Mary', '1987', 'USA')\par
-\par
-DELETE FROM "Author"\par
-WHERE  last_name = 'Kody'AND first_name = 'Mary' AND year_birth = '1987'\par
-AND country = 'USA'\par
-\par
-\f0\lang1058\'c2\'e8\'e2\'b3\'e4 \'f3\'f1\'b3\'f5 \'ea\'ed\'e8\'e3, \'e0\'e2\'f2\'ee\'f0\'b3\'e2, \'e2\'e8\'e4\'e0\'e2\'ed\'e8\'f6\'f2\'e2;\par
-SELECT book_name, last_name, first_name, edition_name\par
-FROM "Book_author" \par
-INNER JOIN  "Book" ON  "Book".id_book = "Book_author".id_book\par
-INNER JOIN "Author" ON "Author".id_author = "Book_author".id_author\par
-INNER JOIN "Edition" ON "Edition".edition_id = "Book".edition_id\par
-\par
-\'cf\'ee\'f8\'f3\'ea \'ef\'ee \'f7\'e0\'f1\'f2\'e8\'ed\'b3 \'ed\'e0\'e7\'e2\'b3 \'ea\'ed\'e8\'e3\'e8, \'e2\'e8\'e4\'e0\'e2\'ed\'e8\'f6\'f2\'e2\'e0 \'f7\'e8 \'ef\'f0\'b3\'e7\'e2\'e8\'f9\'e0 \'e0\'e2\'f2\'ee\'f0\'e0;\par
-SELECT book_name, edition_name \par
-FROM "Book"\par
-INNER JOIN "Edition" ON "Book".edition_id = "Edition".edition_id \par
-WhERE "Edition".edition_name = 'West'\par
-\par
-SELECT last_name, first_name \par
-FROM "Author" \par
-WHERE last_name LIKE '%o%'\par
-\par
-SELECT book_name\par
-FROM "Book" \par
-WHERE book_name LIKE '%a%'\par
-\par
-SELECT edition_name\par
-FROM "Edition" \par
-WHERE edition_name LIKE '%a%'\par
-\par
-\par
-\'c2\'e8\'e2\'b3\'e4 \'ea\'ed\'e8\'e3 \'e7\'e0\'e4\'e0\'ed\'ee\'e3\'ee \'e0\'e2\'f2\'ee\'f0\'e0; \'e7\'e0\'e4\'e0\'ed\'ee\'e3\'ee \'e2\'e8\'e4\'e0\'e2\'ed\'e8\'f6\'f2\'e2\'e0;\par
-\par
-SELECT book_name, last_name, first_name \par
-FROM "Author" \par
-INNER JOIN  "Book" ON  "Book".id_author = "Author".id_author\par
-WHERE "Author".last_name = 'Kinh'\par
-\par
-\'cf\'e5\'f0\'e5\'e4\'e1\'e0\'f7\'e8\'f2\'e8 \'ec\'ee\'e6\'eb\'e8\'e2\'b3\'f1\'f2\'fc \'f1\'ee\'f0\'f2\'f3\'e2\'e0\'ed\'ed\'ff\par
-SELECT book_name, edition_name \par
-FROM "Book"\par
-INNER JOIN "Edition" ON "Book".edition_id = "Edition".edition_id \par
-ORDER BY book_name DESC\f1\lang9\par
-}
+Реалізувати добавлення і вилучення книг, авторів, видавництв;
+
+DELETE FROM "Edition" 
+WHERE  edition_name ='Sun'AND adress = 'Skort 34'
+
+INSERT INTO "Edition" (edition_name, adress )
+VALUES ( 'Sun', 'Skort 34')
+
+INSERT INTO "Author" (last_name, first_name, year_birth,  country )
+VALUES ( 'Kody', 'Mary', '1987', 'USA')
+
+DELETE FROM "Author"
+WHERE  last_name = 'Kody'AND first_name = 'Mary' AND year_birth = '1987'
+AND country = 'USA'
+
+Вивід усіх книг, авторів, видавництв;
+SELECT book_name, last_name, first_name, edition_name
+FROM "Book_author" 
+INNER JOIN  "Book" ON  "Book".id_book = "Book_author".id_book
+INNER JOIN "Author" ON "Author".id_author = "Book_author".id_author
+INNER JOIN "Edition" ON "Edition".edition_id = "Book".edition_id
+
+Пошук по частині назві книги, видавництва чи прізвища автора;
+SELECT book_name, edition_name 
+FROM "Book"
+INNER JOIN "Edition" ON "Book".edition_id = "Edition".edition_id 
+WhERE "Edition".edition_name = 'West'
+
+SELECT last_name, first_name 
+FROM "Author" 
+WHERE last_name LIKE '%o%'
+
+SELECT book_name
+FROM "Book" 
+WHERE book_name LIKE '%a%'
+
+SELECT edition_name
+FROM "Edition" 
+WHERE edition_name LIKE '%a%'
+
+
+Вивід книг заданого автора; заданого видавництва;
+
+SELECT book_name, last_name, first_name 
+FROM "Author" 
+INNER JOIN  "Book" ON  "Book".id_author = "Author".id_author
+WHERE "Author".last_name = 'Kinh'
+
+Передбачити можливість сортування
+SELECT book_name, edition_name 
+FROM "Book"
+INNER JOIN "Edition" ON "Book".edition_id = "Edition".edition_id 
+ORDER BY book_name DESC
